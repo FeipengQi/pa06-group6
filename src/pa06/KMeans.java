@@ -42,7 +42,7 @@ package pa06;
 			}
 
 			//repeat 100 times
-			for (int i = 0; i < 500; i++) {
+			for (int i = 0; i < 100; i++) {
 				//input samples into each cluster
 				for (Sample data : originalData) {
 					double minDistance = data.getDistance(clusterPoints[0]);
