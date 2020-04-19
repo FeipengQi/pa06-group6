@@ -67,38 +67,5 @@ package pa06;
 			for (int i = 0; i < clusterPoints.length; i++) {
 				System.out.println("Final Cluster Point " + (i + 1) + ": " + clusterPoints[i].toString());
 			}
-			//divide into clusters
-			//build array list for each cluster point
-			ArrayList[] clusters = new ArrayList[numClusters];
-			for (int i = 0; i < numClusters; i++) {
-				clusters[i] = new ArrayList<Sample>();
-			}
-
-			//repeat 100 times
-			for (int i = 0; i < 500; i++) {
-				//input samples into each cluster
-				for (Sample data : originalData) {
-					double minDistance = data.getDistance(clusterPoints[0]);
-					int index = 0;
-					//find the closest points
-					for (int k = 1; k < numClusters; k++) {
-						if (data.getDistance(clusterPoints[k]) < minDistance) {
-							minDistance = data.getDistance(clusterPoints[k]);
-							index = k;
-						}
-					}
-					clusters[index].add(data);
-				}
-				//replace each old cluster point with new avg point
-				for (int h = 0; h < clusterPoints.length; h++) {
-					Cluster cluster = new Cluster(clusterPoints[h], clusters[h]);
-					clusterPoints[h] = cluster.getNewCluster();
-				}
-			}
-
-			//print our final cluster points
-			for (int i = 0; i < clusterPoints.length; i++) {
-				System.out.println("Final Cluster Point " + (i + 1) + ": " + clusterPoints[i].toString());
-			}
 		}
 	}
