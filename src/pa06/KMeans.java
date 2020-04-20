@@ -1,3 +1,8 @@
+/**
+ * the Kmeans class asks the user for a file and the number of cluster points that the user wants.
+ * the class will rearrange the cluster regarding randomly generated cluster points 100 times.
+ */
+
 package pa06;
 
 	import java.util.*;
