@@ -5,8 +5,9 @@ import java.util.ArrayList;
 /**
  * A cluster is a cluster point (which is itself a sample)
  * and a list of Samples (the one's closest to that sample point, ideally).
- * @author presenting
- *
+ * @author Wenjie Wang
+ * PA06
+ * 04/20/20
  */
 public class Cluster {
     private Sample clusterPoint;

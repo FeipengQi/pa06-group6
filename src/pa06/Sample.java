@@ -2,7 +2,9 @@ package pa06;
 
 /**
  * A Sample represents a vector of doubles to be used in a clustering algorithm...
- * @author presenting
+ * @author Qiming Feng
+ * PA06
+ * 04/20/20
  *
  */
 

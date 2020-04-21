@@ -1,4 +1,9 @@
 package pa06;
+/**
+ * @author Jane Wang, Feipeng Qi
+ * PA06
+ * 04/20/20
+ */
 
 	import java.util.*;
 	import java.util.ArrayList;
@@ -19,25 +24,33 @@ package pa06;
 				originalData.add(new Sample((double) input.nextInt(), (double) input.nextInt()));
 			}
 
+			Sample[] clusterPoints = new Sample[numClusters];
 
+			generateClusters(clusterPoints, originalData);
+
+			//print our final cluster points
+			for (int i = 0; i < clusterPoints.length; i++) {
+				System.out.println("Final Cluster Point " + (i + 1) + ": " + clusterPoints[i].toString());
+			}
+		}
+
+		public static void generateClusters(Sample[] clusterPoints, ArrayList<Sample> originalData) {
 			//generate random cluster points
 			Random rand = new Random();
-			Sample[] clusterPoints = new Sample[numClusters];
-			for (int i = 0; i < numClusters; i++) {
+			for (int i = 0; i < clusterPoints.length; i++) {
 				//do sth. for repeated sample points
 				clusterPoints[i] = originalData.remove(rand.nextInt(originalData.size()));
 			}
 
-
 			//add deleted data back to the original data
-			for (int i = 0; i < numClusters; i++) {
+			for (int i = 0; i < clusterPoints.length; i++) {
 				originalData.add(clusterPoints[i]);
 			}
 
 			//divide into clusters
 			//build array list for each cluster point
-			ArrayList[] clusters = new ArrayList[numClusters];
-			for (int i = 0; i < numClusters; i++) {
+			ArrayList[] clusters = new ArrayList[clusterPoints.length];
+			for (int i = 0; i < clusterPoints.length; i++) {
 				clusters[i] = new ArrayList<Sample>();
 			}
 
@@ -48,7 +61,7 @@ package pa06;
 					double minDistance = data.getDistance(clusterPoints[0]);
 					int index = 0;
 					//find the closest points
-					for (int k = 1; k < numClusters; k++) {
+					for (int k = 1; k < clusterPoints.length; k++) {
 						if (data.getDistance(clusterPoints[k]) < minDistance) {
 							minDistance = data.getDistance(clusterPoints[k]);
 							index = k;
@@ -62,10 +75,6 @@ package pa06;
 					clusterPoints[h] = cluster.getNewCluster();
 				}
 			}
-
-			//print our final cluster points
-			for (int i = 0; i < clusterPoints.length; i++) {
-				System.out.println("Final Cluster Point " + (i + 1) + ": " + clusterPoints[i].toString());
-			}
 		}
+
 	}
